@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+    
+<div class="text-center">
+    <h1 class="display-4">Bem-vindo!</h1>
+    <div class="card-text"><p><b>Teste prático para a vaga de desenvolvedor backend .Net</b></p></div>    
+</div>
+
+<div class="container-fluid">
+    <div class="row">        
+        <div class="card-text"><p>Candidato: <b>Roberth Silva</b></p></div>
+        <div class="card-text"><p><b>Resumo da aplicação DotkonBlog:</p></b></div>
+        <div class="card-text"><i>O sistema foi desenvolvido usando o framework .net8, utilizando o padrão MVC  e o componente Entity Framework como principal ferramenta para persistência de dados.</i></div>        
+        <div class="card-text"><i>Por questões de simplicidade e facilidade para o momento da execução/validação, o banco de dados escolhido foi o SQLite (base de dados já incluída no projeto).</i></div>
+        <div class="card-text"><i>Para as notificações ao usuário, foi utilizado o SignalR como o componente de websocket. As notificações só acontecem logo após a crição de novos posts.</i></div>
+        <div class="card-text"><i>Para autenticação e autorização do usuário foi utilizado o Identity do .Net.</i></div>
+        <div class="card-text">
+            <i>
+                Princípios SOLID (SRP e DIP) foram utilizandos dentro da arquitetura da solução, com o objetivo de melhorar a organização e entendimento do código.
+            </i>
+        </div>
+        <div class="card-text" style="margin-top:20px"><p><b>Funcionamento da aplicação DotkonBlog:</p></b></div>
+        <div class="card-text">O sistema consite em um cadastro simples de Posts (conteúdos compostos por título e mensagem). O usuário apenas precisa entrar com a informação do título e conteúdo do post, no entanto informações como Id do post, id do usuário e data de criação também são registrados na base de dados.</div>
+        <div class="card-text">É possível que usuários não cadastrados visualizem a listagem de posts, mas ações como criação, edição e exclusão de posts só podem ser efetuadas por usuários cadastrados e devidamente logados no sistema.</div>
+        <div class="card-text">Assim como os posts, a base de dados também armazena informações do usuário, dessa forma é possível cadastrar novos usuários (funcionanlidade obrigatória para o gerencimento dos posts).</div>
+        <div class="card-text">Usuários só poderão excluir os seus próprios posts. Posts criados por outros usuários só podem ser visualizados.</div>
+        <div class="card-text">As notificações são ativadas após o sucesso da criação do post, e somente nesse momento. O SignalR é acionado e este dispara uma notificação de 3 segundos, com a informação do título do novo post.</div>
+        <div class="card-text">Ainda sobre notificações, existe um badged no canto superior da tela exibindo o número de novos posts criados (não número total de posts), que volta a 0 após usuário mudar de tela.</div>        
+
+        <div class="card-text" style="margin-top:20px"><p><b>Instruções para execução:</p></b></div>
+        <div class="card-text">O sistema precisa da base de dados local (DotkonBlog.db, que já está inclusa no projeto) para correta execução. Caso o arquivo não exista no projeto será necessário gerar novamente a base de dados, segue as instruções:</div>
+        <div class="card-text">
+            <ul>
+                <li>No Visual Studio, abrir a janela Package Manager Console</li>
+                <li>Executar o comando <i>add-migration initdb</i> para criação das migrations</li>
+                <li>Executar o comando <i>update-database</i> para criação do arquivo do banco de dados</li>
+            </ul>
+        </div>
+
+        <div class="card-text" style="margin-top:20px"><p><b>Para outras dúvidas, estou à disposição.</p></b></div>
+        <div class="card-text" style="margin-top:20px"><p><b>roberth410@gmail.com</p></b></div>
+        <div class="card-text" style="margin-top:20px"><p><b>(98) 98852-9825</p></b></div>
+    </div>
+</div>
