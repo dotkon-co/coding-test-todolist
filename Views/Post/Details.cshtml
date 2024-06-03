@@ -1,0 +1,46 @@
+﻿@model DotkonBlog.Models.PostModel
+
+@{
+    ViewData["Title"] = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalhando Post</h1>
+
+<div>
+    <h4>Post @Model.Title</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Título
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            Conteúdo
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt class = "col-sm-2">
+            Data de Criação
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt class = "col-sm-2">
+            Usuário
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (ViewData["UserId"].ToString() == Model.UserId)
+    {
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+    }     
+    <a class="btn btn-success" asp-action="Index">Voltar</a>
+</div>

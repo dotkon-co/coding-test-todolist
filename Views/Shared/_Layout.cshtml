@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DotkonBlog</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DotkonBlog.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>    
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DotkonBlog</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <partial name="_LoginPartial.cshtml" />
+                </div>                
+                <div class="notification-badge">
+                    <span class="badge" id="notificationCount">0</span>
+                    <a class="navbar-brand" asp-area="" asp-controller="Post" asp-action="Index">Posts</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div id="alertContainer"></div>
+            @RenderBody()
+        </main>
+    </div>
+
+    <script type="text/javascript">
+        function showAlert(message, type) {
+            // Create alert div
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+            alertDiv.role = 'alert';
+            alertDiv.innerHTML = `<b>Novo post criado: 
+                ${message}</b>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+
+            // Add alert to the alert container
+            const alertContainer = document.getElementById('alertContainer');
+            alertContainer.appendChild(alertDiv);
+
+            // Optionally, remove the alert after a certain time
+            setTimeout(() => {
+                const alert = new bootstrap.Alert(alertDiv);
+                alert.close();
+            }, 5000); // Remove after 5 seconds
+
+            const notificationCountElement = document.getElementById("notificationCount");
+            let count = parseInt(notificationCountElement.textContent);
+            count += 1;
+            notificationCountElement.textContent = count;
+        }
+
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/notificationHub")
+            .build();
+
+        connection.on("ReceiveMessage", (title, content) => {
+            showAlert(title, 'success');            
+        });
+
+        connection.start().catch(err => showAlert(err.toString, 'danger'));
+    </script>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Teste Prático - Dotkon
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
