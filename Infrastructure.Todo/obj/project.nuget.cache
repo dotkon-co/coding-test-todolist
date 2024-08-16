@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ET37B5ocmb4=",
+  "dgSpecHash": "NlCuXSKrCOQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj",
+  "projectFilePath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ederson Henrique\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Ederson Henrique\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.32\\microsoft.aspnetcore.authentication.jwtbearer.6.0.32.nupkg.sha512",

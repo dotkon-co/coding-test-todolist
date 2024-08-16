@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\API.todo\\API.Todo.csproj": {}
+    "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\API.todo\\API.Todo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\API.todo\\API.Todo.csproj": {
+    "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\API.todo\\API.Todo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\API.todo\\API.Todo.csproj",
+        "projectUniqueName": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\API.todo\\API.Todo.csproj",
         "projectName": "API.Todo",
-        "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\API.todo\\API.Todo.csproj",
+        "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\API.todo\\API.Todo.csproj",
         "packagesPath": "C:\\Users\\Ederson Henrique\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\API.todo\\obj\\",
+        "outputPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\API.todo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj": {
-                "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj"
+              "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj": {
+                "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj"
               }
             }
           }
@@ -110,14 +110,14 @@
         }
       }
     },
-    "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Core.Todo\\Core.Todo.csproj": {
+    "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Core.Todo\\Core.Todo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Core.Todo\\Core.Todo.csproj",
+        "projectUniqueName": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Core.Todo\\Core.Todo.csproj",
         "projectName": "Core.Todo",
-        "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Core.Todo\\Core.Todo.csproj",
+        "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Core.Todo\\Core.Todo.csproj",
         "packagesPath": "C:\\Users\\Ederson Henrique\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Core.Todo\\obj\\",
+        "outputPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Core.Todo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -189,14 +189,14 @@
         }
       }
     },
-    "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj": {
+    "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj",
+        "projectUniqueName": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj",
         "projectName": "Infrastructure.Todo",
-        "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj",
+        "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Infrastructure.Todo\\Infrastructure.Todo.csproj",
         "packagesPath": "C:\\Users\\Ederson Henrique\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Infrastructure.Todo\\obj\\",
+        "outputPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Infrastructure.Todo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -218,8 +218,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Core.Todo\\Core.Todo.csproj": {
-                "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Core.Todo\\Core.Todo.csproj"
+              "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Core.Todo\\Core.Todo.csproj": {
+                "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Core.Todo\\Core.Todo.csproj"
               }
             }
           }

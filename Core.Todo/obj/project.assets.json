@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Core.Todo\\Core.Todo.csproj",
+      "projectUniqueName": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Core.Todo\\Core.Todo.csproj",
       "projectName": "Core.Todo",
-      "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Core.Todo\\Core.Todo.csproj",
+      "projectPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Core.Todo\\Core.Todo.csproj",
       "packagesPath": "C:\\Users\\Ederson Henrique\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.List.Test\\Core.Todo\\obj\\",
+      "outputPath": "C:\\Users\\Ederson Henrique\\Documents\\Projetos\\Todo.App.Test\\Core.Todo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
