@@ -1,0 +1,11 @@
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Core.Todo\bin\Debug\net6.0\Core.Todo.deps.json
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Core.Todo\bin\Debug\net6.0\Core.Todo.dll
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Core.Todo\bin\Debug\net6.0\Core.Todo.pdb
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Core.Todo\obj\Debug\net6.0\Core.Todo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Core.Todo\obj\Debug\net6.0\Core.Todo.AssemblyInfoInputs.cache
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Core.Todo\obj\Debug\net6.0\Core.Todo.AssemblyInfo.cs
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Core.Todo\obj\Debug\net6.0\Core.Todo.csproj.CoreCompileInputs.cache
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Core.Todo\obj\Debug\net6.0\Core.Todo.dll
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Core.Todo\obj\Debug\net6.0\refint\Core.Todo.dll
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Core.Todo\obj\Debug\net6.0\Core.Todo.pdb
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Core.Todo\obj\Debug\net6.0\ref\Core.Todo.dll

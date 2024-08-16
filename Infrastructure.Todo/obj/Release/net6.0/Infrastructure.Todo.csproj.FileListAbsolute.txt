@@ -1,0 +1,17 @@
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\bin\Release\net6.0\Infrastructure.Todo.deps.json
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\bin\Release\net6.0\Infrastructure.Todo.runtimeconfig.json
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\bin\Release\net6.0\Infrastructure.Todo.dll
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\bin\Release\net6.0\Infrastructure.Todo.pdb
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\bin\Release\net6.0\Core.Todo.dll
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\bin\Release\net6.0\Core.Todo.pdb
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\obj\Release\net6.0\Infrastructure.Todo.csproj.AssemblyReference.cache
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\obj\Release\net6.0\Infrastructure.Todo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\obj\Release\net6.0\Infrastructure.Todo.AssemblyInfoInputs.cache
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\obj\Release\net6.0\Infrastructure.Todo.AssemblyInfo.cs
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\obj\Release\net6.0\Infrastructure.Todo.csproj.CoreCompileInputs.cache
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\obj\Release\net6.0\Infrastr.AD08F4D1.Up2Date
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\obj\Release\net6.0\Infrastructure.Todo.dll
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\obj\Release\net6.0\refint\Infrastructure.Todo.dll
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\obj\Release\net6.0\Infrastructure.Todo.pdb
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\obj\Release\net6.0\Infrastructure.Todo.genruntimeconfig.cache
+C:\Users\Ederson Henrique\Documents\Projetos\Todo\Infrastructure.Todo\obj\Release\net6.0\ref\Infrastructure.Todo.dll
