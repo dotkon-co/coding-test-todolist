@@ -28,7 +28,6 @@ Para iniciar o serviço RabbitMQ:
 
    ```bash
    docker compose -f docker-compose.json up -d
-```
 
 ### Configuração do Connection String
 No arquivo appsettings.json do projeto, adicione a configuração da connection string para o SQL Server:
