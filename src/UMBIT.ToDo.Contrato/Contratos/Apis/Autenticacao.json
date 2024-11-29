@@ -1,0 +1,326 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "UMBIT.Nexus.Auth.API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/adicionar-administrador": {
+      "post": {
+        "tags": [
+          "Autenticacao"
+        ],
+        "operationId": "AdicionarAdministrador",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdicionarAdministradorRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/adicionar-usuario": {
+      "post": {
+        "tags": [ "Autenticacao" ],
+        "operationId": "AdicionarUsuario",
+        "description": "Adicionar Usuário",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdicionarUsuarioRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "Autenticacao"
+        ],
+        "operationId": "Login",
+        "description": "Login de usuario",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth-status": {
+      "get": {
+        "tags": [
+          "Autenticacao"
+        ],
+        "operationId": "AuthStatus",
+        "description": "Obter status do modelo de autenticação",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthStatusResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user-status": {
+      "post": {
+        "tags": [
+          "Autenticacao"
+        ],
+        "operationId": "UserStatus",
+        "description": "Obter status de usuario",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserStatusRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserStatusResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": [
+          "Autenticacao"
+        ],
+        "operationId": "Logout",
+        "description": "Logout de usuario",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AdicionarAdministradorRequestDTO": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string"
+          }
+        }
+      },
+      "AdicionarUsuarioRequestDTO": {
+        "type": "object",
+        "properties": {
+          "Nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SolicitarAlteracaoSenhaRequestDTO": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResetarSenhaRequestDTO": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserStatusRequestDTO": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequestDTO": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "audience": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RefreshTokenRequestDTO": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "refreshToken": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthStatusResponseDTO": {
+        "type": "object",
+        "properties": {
+          "configured": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserStatusResponseDTO": {
+        "type": "object",
+        "properties": {
+          "ativo": {
+            "type": "boolean"
+          },
+          "refreshPasswordRequested": {
+            "type": "boolean"
+          },
+          "refreshPasswordApproved": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TokenResponseDTO": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          },
+          "ehAdm": {
+            "type": "boolean"
+          },
+          "refreshToken": {
+            "type": "string"
+          },
+          "expiresIn": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "usuarioToken": {
+            "$ref": "#/components/schemas/UsuarioTokenResponseDTO"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioTokenResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "Nome": {
+            "type": "string"
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClaimTokenResponseDTO"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClaimTokenResponseDTO": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

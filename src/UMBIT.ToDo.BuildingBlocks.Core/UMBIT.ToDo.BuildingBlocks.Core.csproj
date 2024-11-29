@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+		<PackageReference Include="FluentValidation" Version="11.11.0" />
+		<PackageReference Include="MediatR" Version="12.4.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+		<PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\UMBIT.ToDo.BuildingBlocks.Basicos\UMBIT.ToDo.BuildingBlocks.Basicos.csproj" />
+	  <ProjectReference Include="..\UMBIT.ToDo.Fabrica\UMBIT.ToDo.BuildingBlocks.Fabrica.csproj" />
+	</ItemGroup>
+
+</Project>

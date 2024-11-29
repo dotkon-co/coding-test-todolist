@@ -1,0 +1,119 @@
+﻿@using UMBIT.Nexus.Auth.Contrato
+@using static UMBIT.ToDo.BuildingBlocksc.ASPNet.Bootstrapper.ContextConfigurate
+@model IEnumerable<UsuarioResponseDTO>
+
+@inject AuthSessionContext authSessionContext
+
+<style>
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    .badge {
+        font-size: 90%;
+    }
+</style>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Listagem de Usuários</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-muted">Nenhum usuário encontrado</td>
+                    </tr>
+                }
+                else
+                {
+                    int count = 1;
+                    foreach (var user in Model)
+                    {
+                        <tr id="user-@user.Id">
+                            <td>@count</td>
+                            <td>@user.Nome</td>
+                            <td>@user.Email</td>
+                            <td>
+                                @if (user.Ativo)
+                                {
+                                    <span>Ativo</span>
+                                }
+                                else
+                                {
+                                    <span>Inativo</span>
+                                }
+                            </td>
+                            <td>
+                                @if (authSessionContext.GetAuthContext<TokenResponseDTO>()?.UsuarioToken.Id != user.Id.ToString())
+                                {
+                                    <a onclick="deleteUser('@user.Id')"
+                                       class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash"></i> Excluir
+                                    </a>
+                                }
+
+                                <a onclick="avise('@user.Id')"
+                                   class="btn btn-sm btn-warning">
+                                    <i class="fas fa-arrow"></i> Notificar
+                                </a>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function deleteUser(userId) {
+            if (confirm('Tem certeza que deseja excluir este usuário?')) {
+                // Enviar requisição DELETE com AJAX
+                $.ajax({
+                    url: '/Usuarios/DeleteUsuario/' + userId,
+                    type: 'DELETE',
+                    success: function (response) {
+                        if (response.success) {
+                            $('#user-' + userId).remove();
+                            alert(response.message); 
+                        } else {
+                            alert(response.message); 
+                        }
+                    },
+                    error: function () {
+                        alert('Erro ao tentar excluir o usuário.');
+                    }
+                });
+            }
+        }
+        function avise(userId) {
+            if (confirm('Tem certeza que deseja notificar este usuário?')) {
+                // Enviar requisição DELETE com AJAX
+                $.ajax({
+                    url: '/Usuarios/Aviso/' + userId,
+                    type: 'POST',
+                    success: function (response) {
+                        alert(response.message);
+                    },
+                    error: function () {
+                        alert('Erro ao tentar notificar usuário.');
+                    }
+                });
+            }
+        }
+    </script>
+
+}

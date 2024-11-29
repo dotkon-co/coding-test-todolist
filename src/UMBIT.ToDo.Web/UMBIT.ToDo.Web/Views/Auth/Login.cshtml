@@ -1,0 +1,51 @@
+﻿@using UMBIT.Nexus.Auth.Contrato
+@{
+    ViewData["Title"] = "Login";
+}
+
+@model LoginRequestDTO
+
+<div class="d-flex align-items-center justify-content-center vh-100 bg-light">
+    <div class="card shadow-lg p-4" style="width: 400px;">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Bem-vindo!</h2>
+            <p class="text-muted text-center mb-4">Faça login para continuar.</p>
+
+            @if (!string.IsNullOrEmpty(ViewBag.Error))
+            {
+                <div class="alert alert-danger text-center">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <form asp-action="Login" method="post">
+                <div class="form-group">
+                    <label for="username" class="font-weight-bold">Usuário</label>
+                    <input type="text"
+                           class="form-control"
+                           id="username"
+                           name="User"
+                           placeholder="Digite seu usuário"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="font-weight-bold">Senha</label>
+                    <input type="password"
+                           class="form-control"
+                           id="password"
+                           name="Password"
+                           placeholder="Digite sua senha"
+                           required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-3">Entrar</button>
+            </form>
+
+            <hr class="my-4">
+            <div class="text-center">
+                <small class="text-muted">Não tem uma conta? <a asp-action="CreateUsuario" class="text-primary">Registre-se aqui</a>.</small>
+            </div>
+        </div>
+    </div>
+</div>

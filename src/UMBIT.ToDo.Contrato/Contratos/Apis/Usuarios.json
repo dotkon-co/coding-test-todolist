@@ -1,0 +1,202 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "UMBIT.Nexus.Auth.API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/usuarios": {
+      "get": {
+        "tags": [ "Usuarios" ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UsuarioResponseDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usuario/{id}": {
+      "put": {
+        "tags": [ "Usuarios" ],
+        "operationId": "AtualizarUsuario",
+        "description": "Atualizar Usuário",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AtualizarUsuarioRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Usuarios" ],
+        "operationId": "RemoverUsuario",
+        "description": "Remover Usuario",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/usuario/atualizar-dados-usuario": {
+      "post": {
+        "tags": [ "Usuarios" ],
+        "operationId": "AtualizarDadosUsuario",
+        "description": "Atualizar Dados do Usuario Logado",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AtualizarDadosDeUsuarioRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "AtualizarDadosDeUsuarioRequestDTO": {
+        "type": "object",
+        "properties": {
+          "Nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AtualizarUsuarioRequestDTO": {
+        "type": "object",
+        "properties": {
+          "idUsuario": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AdicionarPerfilDeUsuarioRequestDTO": {
+        "type": "object",
+        "properties": {
+          "idPerfil": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AdicionarPermissaoUsuarioRequestDTO": {
+        "type": "object",
+        "properties": {
+          "identificadorPermissao": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "ativo": {
+            "type": "boolean"
+          },
+          "atualizacaoSenhaRequisitada": {
+            "type": "boolean"
+          },
+          "atualizacaoSenhaAprovada": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PerfilDeUsuarioResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nome": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\bin\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.SignalR.deps.json
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\bin\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.SignalR.dll
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\bin\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.SignalR.pdb
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\bin\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.dll
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\bin\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.pdb
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.SignalR.csproj.AssemblyReference.cache
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.SignalR.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.SignalR.AssemblyInfoInputs.cache
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.SignalR.AssemblyInfo.cs
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.SignalR.csproj.CoreCompileInputs.cache
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.SignalR.sourcelink.json
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\obj\Debug\net8.0\UMBIT.To.B3D8941B.Up2Date
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.SignalR.dll
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\obj\Debug\net8.0\refint\UMBIT.ToDo.BuildingBlocks.SignalR.dll
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.SignalR.pdb
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.SignalR\obj\Debug\net8.0\ref\UMBIT.ToDo.BuildingBlocks.SignalR.dll
