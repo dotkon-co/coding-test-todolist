@@ -1,0 +1,13 @@
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\bin\Debug\net8.0\UMBIT.ToDo.Fabrica.deps.json
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\bin\Debug\net8.0\UMBIT.ToDo.Fabrica.dll
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\bin\Debug\net8.0\UMBIT.ToDo.Fabrica.pdb
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\obj\Debug\net8.0\UMBIT.ToDo.Fabrica.csproj.AssemblyReference.cache
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\obj\Debug\net8.0\UMBIT.ToDo.Fabrica.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\obj\Debug\net8.0\UMBIT.ToDo.Fabrica.AssemblyInfoInputs.cache
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\obj\Debug\net8.0\UMBIT.ToDo.Fabrica.AssemblyInfo.cs
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\obj\Debug\net8.0\UMBIT.ToDo.Fabrica.csproj.CoreCompileInputs.cache
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\obj\Debug\net8.0\UMBIT.ToDo.Fabrica.sourcelink.json
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\obj\Debug\net8.0\UMBIT.ToDo.Fabrica.dll
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\obj\Debug\net8.0\refint\UMBIT.ToDo.Fabrica.dll
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\obj\Debug\net8.0\UMBIT.ToDo.Fabrica.pdb
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Fabrica\obj\Debug\net8.0\ref\UMBIT.ToDo.Fabrica.dll

@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "echarts@5.5.0",
+      "destination": "wwwroot/lib/echarts/"
+    },
+    {
+      "library": "pnotify@5.1.2",
+      "destination": "wwwroot/pnotify/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "microsoft-signalr@8.0.7",
+      "destination": "wwwroot/microsoft-signalr/"
+    }
+  ]
+}

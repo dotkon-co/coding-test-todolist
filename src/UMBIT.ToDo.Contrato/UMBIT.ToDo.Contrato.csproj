@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+		<PackageReference Include="NSwag.MSBuild" Version="14.0.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<OpenApiFiles Include="./Contratos/Apis/*.json">
+			<ApiName>%(filename)</ApiName>
+		</OpenApiFiles>
+	</ItemGroup>
+
+	<ItemGroup>
+		<OpenApiPermissionsFiles Include="./Contratos/Permissoes/*.json">
+			<ApiName>%(filename)</ApiName>
+		</OpenApiPermissionsFiles>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Contratos\Apis\ToDo.json" />
+		<Content Include="Contratos\_base.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\UMBIT.ToDo.BuildingBlocks.Core\UMBIT.ToDo.BuildingBlocks.Core.csproj" />
+	  <ProjectReference Include="..\UMBIT.ToDo.BuildingBlocks.WebApi\UMBIT.ToDo.BuildingBlocks.WebAPI.csproj" />
+	</ItemGroup>
+
+	<Target Name="NSwag" Outputs="%(OpenApiToClientCode.Identity)" BeforeTargets="PrepareForBuild" Condition="'$(Configuration)' == 'Debug'">
+
+		<Exec Command="$(NSwagExe_Net80) run nswag-apis.json /variables:InputFile=%(OpenApiFiles.Identity)" Condition="%(OpenApiFiles.Identity) != ''" />
+		<Message Importance="high" Text="%(OpenApiFiles.Identity)" />
+
+		<Exec Command="$(NSwagExe_Net80) run nswag-permissoes.json /variables:InputFile=%(OpenApiPermissionsFiles.Identity)" Condition="%(OpenApiPermissionsFiles.Identity) != ''" />
+		<Message Importance="high" Text="%(OpenApiPermissionsFiles.Identity)" />
+
+	</Target>
+</Project>

@@ -1,0 +1,6 @@
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Contrato\obj\Debug\net6.0\UMBIT.ToDo.Contrato.csproj.AssemblyReference.cache
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Contrato\obj\Debug\net6.0\UMBIT.ToDo.Contrato.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Contrato\obj\Debug\net6.0\UMBIT.ToDo.Contrato.AssemblyInfoInputs.cache
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Contrato\obj\Debug\net6.0\UMBIT.ToDo.Contrato.AssemblyInfo.cs
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Contrato\obj\Debug\net6.0\UMBIT.ToDo.Contrato.csproj.CoreCompileInputs.cache
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.Contrato\obj\Debug\net6.0\UMBIT.ToDo.Contrato.sourcelink.json

@@ -1,0 +1,12 @@
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\bin\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.deps.json
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\bin\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.dll
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\bin\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.pdb
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.AssemblyInfoInputs.cache
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.AssemblyInfo.cs
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.csproj.CoreCompileInputs.cache
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.sourcelink.json
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.dll
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\obj\Debug\net8.0\refint\UMBIT.ToDo.BuildingBlocks.Basicos.dll
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\obj\Debug\net8.0\UMBIT.ToDo.BuildingBlocks.Basicos.pdb
+D:\Dev\_ByMySelf\UMBIT\UMBIT.ToDo\src\UMBIT.ToDo.BuildingBlocks.Basicos\obj\Debug\net8.0\ref\UMBIT.ToDo.BuildingBlocks.Basicos.dll

@@ -1,0 +1,134 @@
+﻿@using UMBIT.Nexus.Auth.Contrato
+@model IEnumerable<TarefaDTO>
+
+<style>
+    .status-toggle {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-size: 0.85rem;
+    }
+
+    .status-completed {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+    .status-in-progress {
+        background-color: #ffc107;
+        color: #fff;
+    }
+
+    .status-pending {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .task-item {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+    .task-title {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .task-desc {
+        font-size: 0.9rem;
+        color: #888;
+    }
+</style>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Lista de Tarefas Pendentes Demo</h2>
+    @foreach (var parentGroup in Model.GroupBy(task => task.IdToDoList))
+    {
+        if (parentGroup.Key != null && parentGroup.Key != Guid.Empty)
+        {
+            var parent = parentGroup.First().ToDoList;
+
+            <div class="mb-4">
+                <div class="d-flex align-items-center mb-2">
+                    <label class="list-header" for="list-checkbox-@parentGroup.Key.Value">
+                        @parent.Nome
+                    </label>
+                </div>
+                <div class="ml-4">
+                    @foreach (var task in parentGroup)
+                    {
+                        <div class="task-item d-flex align-items-baseline">
+                            <div class="flex-grow-1">
+                                <div class="task-title">@task.Nome</div>
+                                @if (!string.IsNullOrWhiteSpace(task.Descricao))
+                                {
+                                    <div class="task-desc">@task.Descricao</div>
+                                }
+                            </div>
+                            <div>
+                                <div class="status-toggle @(task.Status == 2 ? "status-completed" : task.Status == 1 ? "status-in-progress" : "status-pending")"
+                                     data-status="@task.Status"
+                                     id="status-toggle-@task.Id"
+                                     onclick="toggleStatus(this)">
+                                    @(task.Status == 2 ? "Completa" : task.Status == 1 ? "Em Progresso" : "Pendente")
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@section scripts {
+
+    <script>
+        function toggleListTasks(listId) {
+            const listCheckbox = document.getElementById(`list-checkbox-${listId}`);
+            const taskCheckboxes = document.querySelectorAll(`.list-checkbox-${listId}`);
+            taskCheckboxes.forEach(checkbox => checkbox.checked = listCheckbox.checked);
+        }
+
+        function checkListStatus(listId) {
+            const listCheckbox = document.getElementById(`list-checkbox-${listId}`);
+            const taskCheckboxes = document.querySelectorAll(`.list-checkbox-${listId}`);
+            const allTasksChecked = Array.from(taskCheckboxes).every(checkbox => checkbox.checked);
+
+            if (!allTasksChecked) {
+                listCheckbox.checked = false;
+            }
+        }
+
+        function toggleStatus(element) {
+            const currentStatus = parseInt(element.getAttribute('data-status'), 10);
+            const nextStatus = currentStatus === 2 ? 0 : currentStatus + 1;
+
+            element.setAttribute('data-status', nextStatus);
+
+            switch (nextStatus) {
+                case 2:
+                    element.className = 'status-toggle status-completed';
+                    element.textContent = 'Completa';
+                    break;
+                case 1:
+                    element.className = 'status-toggle status-in-progress';
+                    element.textContent = 'Em Progresso';
+                    break;
+                case 0:
+                    element.className = 'status-toggle status-pending';
+                    element.textContent = 'Pendente';
+                    break;
+            }
+        }
+    </script>
+}

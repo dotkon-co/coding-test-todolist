@@ -1,0 +1,174 @@
+﻿@using NonFactors.Mvc.Grid
+@using UMBIT.Nexus.Auth.Contrato
+@{
+    int? status = ViewBag.Status;
+    Guid? idList = ViewBag.IdList;
+    string pieData = ViewBag.PieData;
+    IEnumerable<ListaDTO> lists = ViewBag.Lists;
+    string setStatus = $" <select data-id=\"TASKID\" class=\"task-status-select\" name=\"select\">   <option value=\"0\" >Criado</option>    <option value=\"1\">Em andamento</option>   <option value=\"2\">Concluido</option>  </select>";
+
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<TarefaDTO>
+
+
+
+<style>
+    .listagem {
+        margin: 10px
+    }
+
+    .add-btn {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        height: 40px;
+        width: fit-content;
+        margin: 5px;
+        padding: 5px;
+    }
+</style>
+
+<div class="center">
+
+    <div class="dashboards">
+        <div class="row">
+            <div id="pie-chart-container" style="width: 100%;height:400px;"></div>
+        </div>
+    </div>
+
+    <div class="row col-md-12 justify-content-end">
+        @if (idList != null)
+        {
+            <a asp-action="DeleteList" asp-route-id="@idList" class="btn btn-danger add-btn">Excluir Lista</a>
+            <a asp-action="EditList" asp-route-id="@idList" class="btn btn-warning add-btn">Editar Lista</a>
+        }
+        <a asp-action="AddTask" class="btn btn-warning add-btn">Add Tarefa</a>
+        <a asp-action="AddList" class="btn btn-warning add-btn">Add Lista</a>
+    </div>
+
+    <div class="row col-lg-6 ms-2 align-self-start ">
+        <div class="row col-lg-4">
+            <select id="status-select" name="select">
+                <!option value="" @(!status.HasValue ? "selected" : "")> Geral</!option>
+                <!option value="0"  @(status.HasValue && status.Value == 0 ? "selected" : "")>Criado</!option>
+                <!option value="1"  @(status.HasValue && status.Value == 1 ? "selected" : "")>Em andamento</!option>
+                <!option value="2"  @(status.HasValue && status.Value == 2 ? "selected" : "")>Concluido</!option>
+
+            </select>
+        </div><div class="row col-lg-4 ms-2">
+            <select id="list-select" name="select">
+                <option value=" ">Todas as listas</option>
+                @if (lists != null)
+                {
+                    foreach (var list in lists)
+                    {
+                        <!option value="@list.Id" @(idList != null && idList == list.Id ? "selected" : "")>@list.Nome</!option>
+                    }
+                }
+            </select>
+
+        </div>
+    </div>
+
+    <div class="listagem">
+        @(Html.Grid(Model)
+            .Build(columns =>
+            {
+                columns.Add(model => model.Nome).Titled("Titulo");
+                columns.Add(model => model.Descricao).Titled(Html.DisplayNameFor(model => model.Descricao));
+                columns.Add(model => model.DataInicio.ToString("dd/MM/yyyy HH:mm:ss")).Titled(Html.DisplayNameFor(model => model.DataInicio));
+                columns.Add(model => model.DataFim.ToString("dd/MM/yyyy HH:mm:ss")).Titled(Html.DisplayNameFor(model => model.DataFim));
+                columns.Add(model => setStatus.Replace($"{model.Status}\"", "\" selected").Replace("TASKID", model.Id.ToString())).Titled(Html.DisplayNameFor(model => model.Status)).Encoded(false);
+                columns.Add(model => Html.ActionLink("Editar", "EditTask", new { id = model.Id })).Encoded(false);
+                columns.Add(model => Html.ActionLink("Excluir", "DeleteTask", new { id = model.Id })).Encoded(false);
+            })
+            .Using(GridFilterMode.Header)
+            .Empty("No data found")
+            .Filterable()
+            .Sortable()
+            .Pageable()
+            )
+
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function setEdge(element, option) {
+
+            var chartDom = document.getElementById(element);
+            var myChart = echarts.init(chartDom);
+
+            if (option && typeof option === 'object') {
+                myChart.setOption(option);
+            }
+        }
+    </script>
+    <script>
+        let optionPie = {
+            title: {
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [
+                {
+                    name: 'Access From',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        { value: 1048, name: 'Search Engine' },
+                        { value: 735, name: 'Direct' },
+                        { value: 580, name: 'Email' },
+                        { value: 484, name: 'Union Ads' },
+                        { value: 300, name: 'Video Ads' }
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        @{
+            <text>
+                    optionPie.series[0].data = @Html.Raw(pieData);
+            </text>
+        }
+    </script>
+    <script>
+
+            $("#status-select").on("change", function (el) {
+                let status = $(el.currentTarget).val();
+                let listid = $("#list-select").val();
+                var url = '@Url.Action("ListaTarefa", "Home")' + `?status=${status}&idList=${listid}`;
+                location.href = url;
+            });
+
+        $("#list-select").on("change", function (el) {
+            let listid = $(el.currentTarget).val();
+            let status = $("#status-select").val();
+            var url = '@Url.Action("ListaTarefa", "Home")' + `?status=${status}&idList=${listid}`;
+            location.href = url;
+        });
+
+        $(".task-status-select").on("change", function (el) {
+            let status = $(el.currentTarget).val();
+            let id = $(el.currentTarget).data("id");
+            fetch('@Url.Action("AltereStatus", "Home")' + `?id=${id}&status=${status}`, { method: 'POST' })
+                .catch(t => alert("erro em mundaça de status"))
+                .then(t => location.reload())
+        });
+
+        setEdge('pie-chart-container', optionPie)
+    </script>
+}

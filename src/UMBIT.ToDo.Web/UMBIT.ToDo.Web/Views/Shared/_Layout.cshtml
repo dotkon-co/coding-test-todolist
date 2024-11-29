@@ -1,0 +1,168 @@
+﻿@using System.Text.Json
+@using UMBIT.Nexus.Auth.Contrato
+@using static UMBIT.ToDo.BuildingBlocksc.ASPNet.Bootstrapper.ContextConfigurate
+
+@inject IConfiguration configuration
+@inject AuthSessionContext authSessionContext
+
+@{
+    var SignalUrl = configuration.GetSection("BaseAdressService").Value + "hub";
+    var IdUsuario = authSessionContext.EhAutenticado ? authSessionContext.GetAuthContext<TokenResponseDTO>()?.UsuarioToken.Id : null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UMBIT.ToDo.Web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="~/css/mvc-grid.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/UMBIT.ToDo.Web.styles.css" asp-append-version="true" />
+    <link href="~/css/animate.min.css" rel="stylesheet" />
+    <link href="~/css/brighttheme.min.css" rel="stylesheet" />
+    <link href="~/css/pnotify.css" rel="stylesheet" />
+    <link href="~/css/pnotifybootstrap4.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                @if (authSessionContext.EhAutenticado)
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Olá @(authSessionContext.GetAuthContext<TokenResponseDTO>()?.UsuarioToken.Nome)</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Tarefas Pendentes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListaTarefa">Gerenciamento de Tarefas</a>
+                            </li>
+                            @if (authSessionContext.GetAuthContext<TokenResponseDTO>()?.EhAdm ?? false)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
+                                </li>
+                            }
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <form id="logoutForm" method="post" asp-area="" asp-controller="Auth" asp-action="Logout">
+                                    <button type="submit" class="btn btn-outline-danger">Sair</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                }
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+    </footer>
+    <script src="~/js/pnotify.min.js"></script>
+    <script src="~/js/pnotify.js"></script>
+    <script src="~/js/pnotifybootstrap4.js"></script>
+    <script src="~/lib/mvc-grid/mvc-grid.js"></script>
+    <script src="~/js/mvc-grid-lang.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/echarts/echarts.common.js"></script>
+    <script src="~/lib/echarts/echarts.common.min.js"></script>
+    <script src="~/lib/echarts/echarts.js"></script>
+    <script src="~/lib/echarts/echarts.min.js"></script>
+    <script src="~/lib/echarts/echarts.simple.js"></script>
+    <script src="~/lib/echarts/echarts.simple.min.js"></script>
+    <script src="~/microsoft-signalr/signalr.js"></script>
+    <script src="~/microsoft-signalr/signalr.min.js"></script>
+
+    <script>
+        document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+    </script>
+          @if(IdUsuario != null){
+              
+          <script>
+            async function connectToSignalRGroup() {
+              const connection = new signalR.HubConnectionBuilder()
+                                              .withUrl("@SignalUrl", {
+                                                skipNegotiation: true,
+                                                transport: signalR.HttpTransportType.WebSockets,
+                                              })
+                                              .withHubProtocol(new signalR.JsonHubProtocol()) 
+                                              .configureLogging(signalR.LogLevel.Information) 
+                                              .build();
+              try {
+                await connection.start();
+
+                await connection.invoke("Registrar", "@IdUsuario");
+
+                  connection.on("avisos", (notification) => {
+                      PNotify.notice({
+                            text: notification,
+                            delay: 5000,
+                            closer: true,
+                            animation: 'fade',
+                            buttons: {
+                                closerHover: true
+                            }
+                        });
+                  });
+
+              } catch (error) {
+                console.error("Erro ao conectar ao SignalR Hub:", error);
+              }
+            }
+
+            connectToSignalRGroup();
+          </script>
+    }
+    <script>
+        $(document).ready(function () {
+
+         if (typeof window.maxOpenWait === 'undefined') {
+                  window.maxOpenWait = new PNotify.Stack({
+                    dir1: "down",
+                    dir2: "left",
+                    firstpos1: 25,
+                    firstpos2: 25,
+                    modal: false,
+                    maxOpen: 3,
+                    maxStrategy: 'wait',
+                    maxClosureCausesWait: false
+                  });
+        }
+
+            var notifications = @Html.Raw(TempData["Notifications"] ?? "[]");
+
+            notifications.forEach((notification) => {
+                PNotify.notice({
+                    title: notification.titulo,
+                    text: notification.mensagem,
+                    stack: window.maxOpenWait,
+                    delay: 5000,
+                    closer: true,
+                    animation: 'fade',
+                    buttons: {
+                        closerHover: true
+                    }
+                });
+            });
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

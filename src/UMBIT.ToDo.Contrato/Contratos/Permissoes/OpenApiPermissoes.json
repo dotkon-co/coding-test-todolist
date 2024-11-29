@@ -1,0 +1,50 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "UMBIT.MicroService.Template.API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/permissoes": {
+      "get": {
+        "tags": [
+          "Autorizacao"
+        ],
+        "operationId": "ObterPermissoes",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permissoes"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permissoes"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permissoes"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Permissoes": {
+        "type": "string",
+        "enum": [
+          "DEFAULT",
+          "TESTE"
+        ]
+      }
+    }
+  }
+}

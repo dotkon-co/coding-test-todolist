@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>d250bf8d-cddd-4f12-8e42-bc8d77d5feca</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    <PackageReference Include="NonFactors.Grid.Mvc6" Version="7.2.1" />
+    <PackageReference Include="Refit" Version="7.0.0" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\UMBIT.ToDo.BuildingBlocks.ASPNet\UMBIT.ToDo.BuildingBlocksc.ASPNet.csproj" />
+    <ProjectReference Include="..\..\UMBIT.ToDo.Contrato\UMBIT.ToDo.Contrato.csproj" />
+  </ItemGroup>
+
+</Project>
