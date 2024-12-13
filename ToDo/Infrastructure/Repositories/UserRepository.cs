@@ -24,9 +24,11 @@ namespace Infrastructure.Repositories
 			await _context.SaveChangesAsync();
 		}
 
-		public async Task<IEnumerable<UserEntity>> GetAsync()
-		{
-			return await _context.Users.AsNoTracking().ToListAsync();
-		}
+		public async Task<IEnumerable<UserEntity>> GetAsync() 
+			=> await _context.Users.AsNoTracking().ToListAsync();
+		
+
+		public async Task<UserEntity?> GetAsync(Guid id)
+			=> await _context.Users.FindAsync(id);
 	}
 }
