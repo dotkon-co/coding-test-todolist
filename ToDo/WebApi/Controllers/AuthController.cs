@@ -1,8 +1,10 @@
 using Domain.Interfaces.Services;
 using Domain.Requests.User;
 using Domain.Responses.Register;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Services;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace WebApi.Controllers
 {
@@ -26,19 +28,18 @@ namespace WebApi.Controllers
 
 		[HttpPost]
 		[Route("Login")]
-		public async Task<RegisterResponse> LoginAsync([FromBody] LoginRequest login)
+		public async Task<TokenResponse> LoginAsync([FromBody] LoginRequest login)
 		{
-			var response = await _userService.LoginAsync(login);
-			return null;
-			//return new RegisterResponse(response.Name, response.User);
+			return await _userService.LoginAsync(login);
 		}
 
+		[Authorize]
 		[HttpDelete]
-		[Route("{id}")]
+		[Route("Delete")]
 		public async Task<bool> UnregisterAsync()
 		{
-			var id = Guid.Parse("aed86e79-f212-4029-8735-d68a772bb617");
-			return await _userService.DeleteAsync(id);
+			var userId = User.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.NameId)?.Value;
+			return await _userService.DeleteAsync(Guid.Parse(userId!));
 		}
 	}
 }

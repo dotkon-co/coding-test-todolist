@@ -2,10 +2,12 @@ using Domain.Entities;
 using Domain.Interfaces.Services;
 using Domain.Requests.ToDo;
 using Domain.Responses.ToDo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
+	[Authorize]
 	[ApiController]
 	[Route("[controller]")]
 	public class ToDoController : ControllerBase
@@ -32,8 +34,7 @@ namespace WebApi.Controllers
 		[HttpGet]
 		public async Task<IEnumerable<TodoResponse>> GetAsync()
 		{
-			var id = Guid.Parse("aed86e79-f212-4029-8735-d68a772bb617");
-			return await _todoService.GetFromUserAsync(id);
+			return await _todoService.GetFromUserAsync();
 		}
 
 		[HttpDelete]

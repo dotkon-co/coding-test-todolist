@@ -1,5 +1,6 @@
 ﻿using Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using WebApi.Middlewares;
 
 namespace WebApi.Extensions
 {
@@ -20,7 +21,11 @@ namespace WebApi.Extensions
 				var services = scope.ServiceProvider;
 				var context = services.GetRequiredService<AppDataContext>(); context.Database.Migrate();
 			}
+		}
 
+		public static void UseCustomMiddlewares(this WebApplication app)
+		{
+			app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 		}
 	}
 }

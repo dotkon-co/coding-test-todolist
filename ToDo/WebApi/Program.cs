@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.AddConfiguration();
+builder.AddAuthentication();
 builder.AddDataContexts();
 builder.AddDocumentation();
 builder.AddServices();
@@ -17,6 +18,8 @@ if (app.Environment.IsDevelopment())
 	app.ConfigureDevEnvironment();
 
 app.RunMigration();
+
+app.UseCustomMiddlewares();
 
 app.UseHttpsRedirection();
 

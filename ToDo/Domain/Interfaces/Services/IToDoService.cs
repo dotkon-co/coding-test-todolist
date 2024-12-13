@@ -8,6 +8,6 @@ namespace Domain.Interfaces.Services
 	{
 		Task<TodoResponse> CreateAsync(ToDoCreateRequest todo);
 		Task<TodoResponse?> GetAsync(Guid id);
-		Task<IEnumerable<TodoResponse>> GetFromUserAsync(Guid userId);
+		Task<IEnumerable<TodoResponse>> GetFromUserAsync();
 	}
 }
