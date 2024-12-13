@@ -3,6 +3,7 @@ using Domain.Interfaces.Services;
 using Infrastructure;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Service.Services;
 
 namespace WebApi.Extensions
@@ -27,8 +28,10 @@ namespace WebApi.Extensions
 				.AddDbContext<AppDataContext>(
 					x =>
 					{
-						x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
-					});
+						x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"), 
+							sqlOptions => sqlOptions.MigrationsAssembly("Infrastructure")).ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+
+		});
 
 		}
 

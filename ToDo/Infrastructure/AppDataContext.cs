@@ -6,7 +6,7 @@ namespace Infrastructure
 {
 	public sealed class AppDataContext : DbContext
 	{
-
+		
 		public DbSet<UserEntity> Users { get; set; } = null!;
 		public DbSet<TodoEntity> ToDos { get; set; } = null!;
 

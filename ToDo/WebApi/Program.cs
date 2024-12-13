@@ -1,3 +1,5 @@
+using Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,10 +15,14 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 	app.ConfigureDevEnvironment();
 
+app.RunMigration();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+
 
 app.Run();
