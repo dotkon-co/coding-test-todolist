@@ -1,5 +1,6 @@
 ﻿using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
+using Domain.Settings;
 using Infrastructure;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,11 @@ namespace WebApi.Extensions
 	public static class BuildExtension
 	{
 		
+		public static void AddConfiguration(this WebApplicationBuilder builder)
+		{
+			builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
+
+		}
 		public static void AddDocumentation(this WebApplicationBuilder builder)
 		{
 			builder.Services.AddEndpointsApiExplorer();
