@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
 using Domain.Requests.Register;
 
@@ -6,19 +7,33 @@ namespace Service.Services
 {
 	public class UserService : IUserService
 	{
-		public Task<bool> DeleteAsync(Guid id)
+		private readonly IEncryptService _encryptService;
+		private readonly IUserRepository _userRepository;
+		public UserService(IEncryptService encryptService, IUserRepository userRepository)
 		{
-			throw new NotImplementedException();
+			_encryptService = encryptService;
+			_userRepository = userRepository;
+		}
+		public async Task<bool> DeleteAsync(Guid id)
+		{
+			var user = await _userRepository.GetAsync(id);
+			if (user == null)
+				return false;
+
+			await _userRepository.DeleteAsync(user);
+			return true;
 		}
 
-		public Task<IEnumerable<UserEntity>> GetAsync()
+		public async Task<IEnumerable<UserEntity>> GetAsync()
 		{
-			throw new NotImplementedException();
+			return await _userRepository.GetAsync();
 		}
 
-		public Task<UserEntity> RegisterAsync(RegisterRequest user)
+		public async Task<UserEntity> RegisterAsync(RegisterRequest user)
 		{
-			throw new NotImplementedException();
+			user.Password = _encryptService.EncryptString(user.Password);
+			var entity = new UserEntity(user.Name, user.User, user.Password);
+			return await _userRepository.CreateAsync(entity);
 		}
 	}
 }

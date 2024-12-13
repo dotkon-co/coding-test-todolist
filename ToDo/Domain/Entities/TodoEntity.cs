@@ -8,11 +8,10 @@
         public Guid UserId { get; set; }
 		public virtual UserEntity User { get; set; } = null!;
 
-		public TodoEntity(Guid id, string title, string description, DateTime createdAt, DateTime? finishedAt) : base(id, createdAt)
+		public TodoEntity(string title, string description)
 		{
 			Title = title;
 			Description = description;
-			FinishedAt = finishedAt;
 		}
 
 		public void SetUser(UserEntity user)

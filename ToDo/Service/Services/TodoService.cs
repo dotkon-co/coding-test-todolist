@@ -1,24 +1,42 @@
 ﻿using Domain.Entities;
+using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
-using Domain.Requests.Register;
+using Domain.Requests.ToDo;
 
 namespace Service.Services
 {
-	public class TodoService : IUserService
+	public class TodoService : IToDoService
 	{
-		public Task<bool> DeleteAsync(Guid id)
+		private readonly IToDoRepository _toDoRepository;
+        public TodoService(IToDoRepository toDoRepository)
+        {
+			_toDoRepository = toDoRepository;
+        }
+
+		public async Task<bool> DeleteAsync(Guid id)
 		{
-			throw new NotImplementedException();
+			var todo = await _toDoRepository.GetAsync(id);
+			if (todo == null)
+				return false;
+
+			await _toDoRepository.DeleteAsync(todo);
+			return true;
 		}
 
-		public Task<IEnumerable<UserEntity>> GetAsync()
+		public async Task<TodoEntity?> GetAsync(Guid id)
 		{
-			throw new NotImplementedException();
+			return await _toDoRepository.GetAsync(id);
 		}
 
-		public Task<UserEntity> RegisterAsync(RegisterRequest user)
+		public async Task<IEnumerable<TodoEntity>> GetFromUserAsync(Guid userId)
 		{
-			throw new NotImplementedException();
+			return await _toDoRepository.GetFromUserAsync(userId);
+		}
+
+		public async Task<TodoEntity> CreateAsync(ToDoCreateRequest todo)
+		{
+			var entity = new TodoEntity(todo.Title, todo.Description);
+			return await _toDoRepository.CreateAsync(entity);
 		}
 	}
 }
