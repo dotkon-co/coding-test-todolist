@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
-using Domain.Requests.Register;
+using Domain.Requests.User;
 using Domain.Responses.User;
 
 namespace Service.Services
@@ -10,10 +10,12 @@ namespace Service.Services
 	{
 		private readonly IEncryptService _encryptService;
 		private readonly IUserRepository _userRepository;
-		public UserService(IEncryptService encryptService, IUserRepository userRepository)
+		private readonly ITokenService _tokenService;
+		public UserService(IEncryptService encryptService, IUserRepository userRepository, ITokenService tokenService)
 		{
 			_encryptService = encryptService;
 			_userRepository = userRepository;
+			_tokenService = tokenService;
 		}
 		public async Task<bool> DeleteAsync(Guid id)
 		{
@@ -31,11 +33,21 @@ namespace Service.Services
 			return users.Select(x => new UserResponse(x.Id ,x.Name, x.User, x.CreatedAt));
 		}
 
-		public async Task<UserEntity> RegisterAsync(RegisterRequest user)
+		public async Task<UserEntity> RegisterAsync(RegisterRequest register)
 		{
-			user.Password = _encryptService.EncryptString(user.Password);
-			var entity = new UserEntity(user.Name, user.User, user.Password);
+			register.Password = _encryptService.HashString(register.Password);
+			var entity = new UserEntity(register.Name, register.User, register.Password);
 			return await _userRepository.CreateAsync(entity);
+		}
+
+		public async Task<string> LoginAsync(LoginRequest login)
+		{
+			var user = await _userRepository.GetAsync(login.User);
+			var validPassword = _encryptService.CheckHash(login.Password, user.Password ?? "");
+			if (user == null || !validPassword)
+				return "";
+
+			return _tokenService.GenerateToken(user);
 		}
 	}
 }

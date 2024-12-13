@@ -1,5 +1,5 @@
 ﻿using Domain.Entities;
-using Domain.Requests.Register;
+using Domain.Requests.User;
 using Domain.Responses.User;
 
 namespace Domain.Interfaces.Services
@@ -7,6 +7,7 @@ namespace Domain.Interfaces.Services
 	public interface IUserService : IBaseService
 	{
 		Task<UserEntity> RegisterAsync(RegisterRequest user);
+		Task<string> LoginAsync(LoginRequest login);
 		Task<IEnumerable<UserResponse>> GetAsync();
 	}
 }

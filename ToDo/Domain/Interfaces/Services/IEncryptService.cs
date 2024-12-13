@@ -2,6 +2,7 @@
 {
 	public interface IEncryptService
 	{
-		string EncryptString(string input);
+		string HashString(string input);
+		public bool CheckHash(string input, string hashString);
 	}
 }

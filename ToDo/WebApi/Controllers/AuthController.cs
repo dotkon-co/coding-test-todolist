@@ -1,5 +1,5 @@
 using Domain.Interfaces.Services;
-using Domain.Requests.Register;
+using Domain.Requests.User;
 using Domain.Responses.Register;
 using Microsoft.AspNetCore.Mvc;
 using Service.Services;
@@ -17,10 +17,20 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+		[Route("Register")]
 		public async Task<RegisterResponse> RegisterAsync([FromBody] RegisterRequest register)
 		{
 			var response = await _userService.RegisterAsync(register);
 			return new RegisterResponse(response.Name, response.User);
+		}
+
+		[HttpPost]
+		[Route("Login")]
+		public async Task<RegisterResponse> LoginAsync([FromBody] LoginRequest login)
+		{
+			var response = await _userService.LoginAsync(login);
+			return null;
+			//return new RegisterResponse(response.Name, response.User);
 		}
 
 		[HttpDelete]

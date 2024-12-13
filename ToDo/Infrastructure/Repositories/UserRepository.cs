@@ -30,5 +30,8 @@ namespace Infrastructure.Repositories
 
 		public async Task<UserEntity?> GetAsync(Guid id)
 			=> await _context.Users.FindAsync(id);
+
+		public async Task<UserEntity?> GetAsync(string user)
+			=> await _context.Users.FirstOrDefaultAsync(x => x.User == user);
 	}
 }

@@ -28,6 +28,8 @@ namespace Infrastructure.Data.Mappings
 				.HasColumnType("NVARCHAR")
 				.HasMaxLength(30);
 
+			builder.HasIndex(c => c.User).IsUnique();
+
 			builder.Property(c => c.Password)
 				.IsRequired()
 				.HasColumnType("NVARCHAR")

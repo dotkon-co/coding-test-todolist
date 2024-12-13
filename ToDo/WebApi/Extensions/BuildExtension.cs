@@ -40,6 +40,7 @@ namespace WebApi.Extensions
 		{
 			builder.Services.AddScoped<IUserService, UserService>();
 			builder.Services.AddScoped<IToDoService, TodoService>();
+			builder.Services.AddScoped<ITokenService, TokenService>();
 			builder.Services.AddScoped<IUserRepository, UserRepository>();
 			builder.Services.AddScoped<IToDoRepository, ToDoRepository>();
 			builder.Services.AddScoped<IEncryptService, EncryptService>();
