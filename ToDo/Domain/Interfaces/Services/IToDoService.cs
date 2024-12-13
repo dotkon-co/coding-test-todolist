@@ -1,12 +1,13 @@
 ﻿using Domain.Entities;
 using Domain.Requests.ToDo;
+using Domain.Responses.ToDo;
 
 namespace Domain.Interfaces.Services
 {
 	public interface IToDoService : IBaseService
 	{
-		Task<TodoEntity> CreateAsync(ToDoCreateRequest todo);
-		Task<TodoEntity?> GetAsync(Guid id);
-		Task<IEnumerable<TodoEntity>> GetFromUserAsync(Guid userId);
+		Task<TodoResponse> CreateAsync(ToDoCreateRequest todo);
+		Task<TodoResponse?> GetAsync(Guid id);
+		Task<IEnumerable<TodoResponse>> GetFromUserAsync(Guid userId);
 	}
 }

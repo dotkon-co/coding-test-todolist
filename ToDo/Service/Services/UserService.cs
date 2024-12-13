@@ -2,6 +2,7 @@
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
 using Domain.Requests.Register;
+using Domain.Responses.User;
 
 namespace Service.Services
 {
@@ -24,9 +25,10 @@ namespace Service.Services
 			return true;
 		}
 
-		public async Task<IEnumerable<UserEntity>> GetAsync()
+		public async Task<IEnumerable<UserResponse>> GetAsync()
 		{
-			return await _userRepository.GetAsync();
+			var users = await _userRepository.GetAsync();
+			return users.Select(x => new UserResponse(x.Id ,x.Name, x.User, x.CreatedAt));
 		}
 
 		public async Task<UserEntity> RegisterAsync(RegisterRequest user)

@@ -1,3 +1,7 @@
+using Domain.Entities;
+using Domain.Interfaces.Services;
+using Domain.Requests.ToDo;
+using Domain.Responses.ToDo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -6,27 +10,37 @@ namespace WebApi.Controllers
 	[Route("[controller]")]
 	public class ToDoController : ControllerBase
 	{
-		private static readonly string[] Summaries = new[]
+		private readonly IToDoService _todoService;
+		public ToDoController(IToDoService todoService)
 		{
-			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-		};
-
-		private readonly ILogger<ToDoController> _logger;
-
-		public ToDoController(ILogger<ToDoController> logger)
-		{
-			_logger = logger;
+			_todoService = todoService;
 		}
-		[HttpGet]
-		public IEnumerable<WeatherForecast> Get()
+
+		[HttpPost]
+		public async Task<TodoResponse> CreateAsync([FromBody] ToDoCreateRequest todo)
 		{
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-			{
-				Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-				TemperatureC = Random.Shared.Next(-20, 55),
-				Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-			})
-			.ToArray();
+			return await _todoService.CreateAsync(todo);
+		}
+
+		[HttpGet]
+		[Route("{id}")]
+		public async Task<TodoResponse?> GetAsync(Guid id)
+		{
+			return await _todoService.GetAsync(id);
+		}
+
+		[HttpGet]
+		public async Task<IEnumerable<TodoResponse>> GetAsync()
+		{
+			var id = Guid.Parse("aed86e79-f212-4029-8735-d68a772bb617");
+			return await _todoService.GetFromUserAsync(id);
+		}
+
+		[HttpDelete]
+		[Route("{id}")]
+		public async Task<bool> DeleteAsync(Guid id)
+		{
+			return await _todoService.DeleteAsync(id);
 		}
 	}
 }

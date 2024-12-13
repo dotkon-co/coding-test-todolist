@@ -8,10 +8,11 @@
         public Guid UserId { get; set; }
 		public virtual UserEntity User { get; set; } = null!;
 
-		public TodoEntity(string title, string description)
+		public TodoEntity(string title, string description, Guid userId)
 		{
 			Title = title;
 			Description = description;
+			UserId = userId;
 		}
 
 		public void SetUser(UserEntity user)

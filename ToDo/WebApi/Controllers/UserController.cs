@@ -1,3 +1,6 @@
+using Domain.Entities;
+using Domain.Interfaces.Services;
+using Domain.Responses.User;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -6,27 +9,15 @@ namespace WebApi.Controllers
 	[Route("[controller]")]
 	public class UserController : ControllerBase
 	{
-		private static readonly string[] Summaries = new[]
+		private readonly IUserService _userService;
+		public UserController(IUserService userService)
 		{
-			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-		};
-
-		private readonly ILogger<UserController> _logger;
-
-		public UserController(ILogger<UserController> logger)
-		{
-			_logger = logger;
+			_userService = userService;
 		}
 		[HttpGet]
-		public IEnumerable<WeatherForecast> Get()
+		public async Task<IEnumerable<UserResponse>> GetAsync()
 		{
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-			{
-				Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-				TemperatureC = Random.Shared.Next(-20, 55),
-				Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-			})
-			.ToArray();
+			return await _userService.GetAsync();
 		}
 	}
 }
