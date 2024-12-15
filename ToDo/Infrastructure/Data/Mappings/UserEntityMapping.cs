@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
+using System.Reflection.Emit;
 
 namespace Infrastructure.Data.Mappings
 {
@@ -17,6 +18,8 @@ namespace Infrastructure.Data.Mappings
 
 			builder.HasKey(c => c.Id);
 			builder.Property(e => e.Id).ValueGeneratedOnAdd();
+
+			builder.HasMany(u => u.Todos).WithOne(t => t.User).HasForeignKey(t => t.UserId).OnDelete(DeleteBehavior.Cascade);
 
 			builder.Property(c => c.Name)
 				.IsRequired()
