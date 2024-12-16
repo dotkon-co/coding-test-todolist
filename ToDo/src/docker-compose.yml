@@ -29,7 +29,7 @@ services:
       - dotkonbase
     networks: 
       - dotkonnetwork
-    command: /bin/sh -c "sleep 70 && dotnet WebApi.dll"
+    command: /bin/sh -c "sleep 90 && dotnet WebApi.dll"
 
 networks: 
   dotkonnetwork: 

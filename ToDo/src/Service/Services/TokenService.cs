@@ -18,7 +18,7 @@ namespace Service.Services
 		{
 			_jwtSettings = jwtSettings.Value;
 		}
-		public TokenResponse GenerateToken(UserResponse user)
+		public TokenResponse GenerateToken(UserEntity user)
 		{
 			var claims = new List<Claim> {
 				new Claim(JwtRegisteredClaimNames.Sub, user.Name),

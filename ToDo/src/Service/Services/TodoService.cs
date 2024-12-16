@@ -9,13 +9,13 @@ using System.IdentityModel.Tokens.Jwt;
 
 namespace Service.Services
 {
-    public class TodoService : IToDoService
+    public class ToDoService : IToDoService
 	{
 		private readonly IToDoRepository _toDoRepository;
 		private readonly IHttpContextAccessor _httpContextAccessor;
 		private readonly string _userId;
 
-		public TodoService(IToDoRepository toDoRepository, IHttpContextAccessor httpContextAccessor)
+		public ToDoService(IToDoRepository toDoRepository, IHttpContextAccessor httpContextAccessor)
         {
 			_toDoRepository = toDoRepository;
 			_httpContextAccessor = httpContextAccessor;
@@ -32,6 +32,18 @@ namespace Service.Services
 
 			await _toDoRepository.DeleteAsync(todo);
 			return true;
+		}
+
+		public async Task<TodoResponse> CompleteAsync(Guid id)
+		{
+
+			var todo = await _toDoRepository.GetAsync(id);
+			if (todo == null || !todo.UserId.ToString().Equals(_userId))
+				throw new DomainException("Task not found", 400);
+
+			todo.FinishedAt = DateTime.Now;
+			await _toDoRepository.UpdateAsync(todo);
+			return new TodoResponse(todo.Id, todo.Title, todo.Description, todo.CreatedAt, todo.FinishedAt, todo.UserId);
 		}
 
 		public async Task<TodoResponse?> GetAsync(Guid id)

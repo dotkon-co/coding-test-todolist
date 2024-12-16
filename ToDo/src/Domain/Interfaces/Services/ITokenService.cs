@@ -1,9 +1,11 @@
 ﻿using Domain.Entities;
+using Domain.Responses.Register;
+using Domain.Responses.User;
 
 namespace Domain.Interfaces.Services
 {
 	public interface ITokenService
 	{
-		string GenerateToken(UserEntity user);
+		TokenResponse GenerateToken(UserEntity user);
 	}
 }

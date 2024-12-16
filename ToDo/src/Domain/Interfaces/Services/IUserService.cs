@@ -6,10 +6,11 @@ using Domain.Responses.User;
 
 namespace Domain.Interfaces.Services
 {
-    public interface IUserService : IBaseService
+    public interface IUserService
 	{
 		Task<RegisterResponse> RegisterAsync(RegisterRequest user);
 		Task<TokenResponse> LoginAsync(LoginRequest login);
 		Task<IEnumerable<UserResponse>> GetAsync();
+		Task<bool> UnregisterAsync();
 	}
 }

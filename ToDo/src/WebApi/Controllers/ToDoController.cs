@@ -43,5 +43,12 @@ namespace WebApi.Controllers
 		{
 			return await _todoService.DeleteAsync(id);
 		}
+
+		[HttpPatch]
+		[Route("{id}")]
+		public async Task<TodoResponse> FinishAsync(Guid id)
+		{
+			return await _todoService.CompleteAsync(id);
+		}
 	}
 }

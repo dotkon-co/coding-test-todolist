@@ -39,8 +39,7 @@ namespace WebApi.Controllers
 		[Route("Delete")]
 		public async Task<bool> UnregisterAsync()
 		{
-			var userId = User.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.NameId)?.Value;
-			return await _userService.DeleteAsync(Guid.Parse(userId!));
+			return await _userService.UnregisterAsync();
 		}
 	}
 }

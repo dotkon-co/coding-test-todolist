@@ -105,7 +105,7 @@ namespace WebApi.Extensions
 		{
 			builder.Services.AddHttpContextAccessor();
 			builder.Services.AddScoped<IUserService, UserService>();
-			builder.Services.AddScoped<IToDoService, TodoService>();
+			builder.Services.AddScoped<IToDoService, ToDoService>();
 			builder.Services.AddScoped<ITokenService, TokenService>();
 			builder.Services.AddScoped<IUserRepository, UserRepository>();
 			builder.Services.AddScoped<IToDoRepository, ToDoRepository>();

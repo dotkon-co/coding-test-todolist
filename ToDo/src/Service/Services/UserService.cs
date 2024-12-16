@@ -49,14 +49,14 @@ namespace Service.Services
 			return new RegisterResponse(entity.Name, entity.User);
 		}
 
-		public async Task<UserResponse> LoginAsync(LoginRequest login)
+		public async Task<TokenResponse> LoginAsync(LoginRequest login)
 		{
 			var user = await _userRepository.GetAsync(login.User);
 			var validPassword = _encryptService.CheckHash(login.Password, user?.Password ?? "");
 			if (user == null || !validPassword)
 				throw new DomainException("User not found", 400);
 
-			return new UserResponse(user.Id, user.Name, user.User, user.CreatedAt);
+			return _tokenService.GenerateToken(user);
 		}
 	}
 }
