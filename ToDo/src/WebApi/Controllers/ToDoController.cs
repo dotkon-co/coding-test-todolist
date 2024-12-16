@@ -1,13 +1,13 @@
 using Domain.Entities;
 using Domain.Interfaces.Services;
-using Domain.Requests.ToDo;
+using Domain.Requests.ToDo.Create;
 using Domain.Responses.ToDo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
 {
-	[Authorize]
+    [Authorize]
 	[ApiController]
 	[Route("[controller]")]
 	public class ToDoController : ControllerBase

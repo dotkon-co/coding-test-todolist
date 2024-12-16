@@ -2,7 +2,8 @@
 using Domain.Exceptions;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
-using Domain.Requests.User;
+using Domain.Requests.User.Login;
+using Domain.Requests.User.Register;
 using Domain.Responses.Register;
 using Domain.Responses.User;
 using Microsoft.AspNetCore.Http;
@@ -10,7 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 
 namespace Service.Services
 {
-	public class UserService : IUserService
+    public class UserService : IUserService
 	{
 		private readonly IEncryptService _encryptService;
 		private readonly IUserRepository _userRepository;
@@ -40,11 +41,12 @@ namespace Service.Services
 			return users.Select(x => new UserResponse(x.Id ,x.Name, x.User, x.CreatedAt));
 		}
 
-		public async Task<UserEntity> RegisterAsync(RegisterRequest register)
+		public async Task<RegisterResponse> RegisterAsync(RegisterRequest register)
 		{
 			register.Password = _encryptService.HashString(register.Password);
 			var entity = new UserEntity(register.Name, register.User, register.Password);
-			return await _userRepository.CreateAsync(entity);
+			entity = await _userRepository.CreateAsync(entity);
+			return new RegisterResponse(entity.Name, entity.User);
 		}
 
 		public async Task<TokenResponse> LoginAsync(LoginRequest login)

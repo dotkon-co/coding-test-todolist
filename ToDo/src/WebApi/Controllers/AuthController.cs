@@ -1,5 +1,6 @@
 using Domain.Interfaces.Services;
-using Domain.Requests.User;
+using Domain.Requests.User.Login;
+using Domain.Requests.User.Register;
 using Domain.Responses.Register;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 
 namespace WebApi.Controllers
 {
-	[ApiController]
+    [ApiController]
 	[Route("[controller]")]
 	public class AuthController : ControllerBase
 	{
@@ -22,8 +23,8 @@ namespace WebApi.Controllers
 		[Route("Register")]
 		public async Task<RegisterResponse> RegisterAsync([FromBody] RegisterRequest register)
 		{
-			var response = await _userService.RegisterAsync(register);
-			return new RegisterResponse(response.Name, response.User);
+			return await _userService.RegisterAsync(register);
+			 
 		}
 
 		[HttpPost]

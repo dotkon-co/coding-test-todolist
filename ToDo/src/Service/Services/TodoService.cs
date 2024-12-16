@@ -2,14 +2,14 @@
 using Domain.Exceptions;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
-using Domain.Requests.ToDo;
+using Domain.Requests.ToDo.Create;
 using Domain.Responses.ToDo;
 using Microsoft.AspNetCore.Http;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace Service.Services
 {
-	public class TodoService : IToDoService
+    public class TodoService : IToDoService
 	{
 		private readonly IToDoRepository _toDoRepository;
 		private readonly IHttpContextAccessor _httpContextAccessor;

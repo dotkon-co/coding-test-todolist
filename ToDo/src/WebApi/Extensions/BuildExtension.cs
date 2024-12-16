@@ -1,6 +1,10 @@
 ﻿using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
+using Domain.Requests.ToDo.Create;
+using Domain.Requests.User.Login;
+using Domain.Requests.User.Register;
 using Domain.Settings;
+using FluentValidation;
 using Infrastructure;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -10,6 +14,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Service.Services;
+using System.Reflection;
 using System.Text;
 
 namespace WebApi.Extensions
@@ -21,6 +26,14 @@ namespace WebApi.Extensions
 		{
 			builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
 
+		}
+
+		public static void AddValidation(this WebApplicationBuilder builder)
+		{
+			builder.Services.AddMediatR(_ => _.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+			builder.Services.AddTransient<IValidator<LoginRequest>, LoginValidator>();
+			builder.Services.AddTransient<IValidator<RegisterRequest>, RegisterValidator>();
+			builder.Services.AddTransient<IValidator<ToDoCreateRequest>, TodoCreateValidator>();
 		}
 
 		public static void AddAuthentication(this WebApplicationBuilder builder)
