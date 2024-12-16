@@ -24,10 +24,10 @@ namespace Service.Services
 			_tokenService = tokenService;
 			_httpContextAccessor = httpContextAccessor;
 		}
-		public async Task<bool> DeleteAsync(Guid id)
+		public async Task<bool> UnregisterAsync()
 		{
 			var userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.NameId)?.Value!;
-			var user = await _userRepository.GetAsync(id);
+			var user = await _userRepository.GetAsync(userId);
 			if (user == null || !userId.Equals(user.Id.ToString()))
 				throw new DomainException("User not found", 400);
 
@@ -49,14 +49,14 @@ namespace Service.Services
 			return new RegisterResponse(entity.Name, entity.User);
 		}
 
-		public async Task<TokenResponse> LoginAsync(LoginRequest login)
+		public async Task<UserResponse> LoginAsync(LoginRequest login)
 		{
 			var user = await _userRepository.GetAsync(login.User);
 			var validPassword = _encryptService.CheckHash(login.Password, user?.Password ?? "");
 			if (user == null || !validPassword)
 				throw new DomainException("User not found", 400);
 
-			return new TokenResponse(_tokenService.GenerateToken(user));
+			return new UserResponse(user.Id, user.Name, user.User, user.CreatedAt);
 		}
 	}
 }

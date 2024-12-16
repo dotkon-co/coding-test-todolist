@@ -1,5 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces.Services;
+using Domain.Responses.Register;
+using Domain.Responses.User;
 using Domain.Settings;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -16,7 +18,7 @@ namespace Service.Services
 		{
 			_jwtSettings = jwtSettings.Value;
 		}
-		public string GenerateToken(UserEntity user)
+		public TokenResponse GenerateToken(UserResponse user)
 		{
 			var claims = new List<Claim> {
 				new Claim(JwtRegisteredClaimNames.Sub, user.Name),
@@ -26,7 +28,7 @@ namespace Service.Services
 			var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
 			var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 			var token = new JwtSecurityToken(issuer: _jwtSettings.Issuer, audience: _jwtSettings.Audience, claims: claims, signingCredentials: creds);
-			return new JwtSecurityTokenHandler().WriteToken(token);
+			return new TokenResponse(new JwtSecurityTokenHandler().WriteToken(token));
 		}
 	}
 }
