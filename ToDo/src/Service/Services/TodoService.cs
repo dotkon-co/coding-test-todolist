@@ -27,7 +27,7 @@ namespace Service.Services
 		{
 
 			var todo = await _toDoRepository.GetAsync(id);
-			if (todo == null || !todo.UserId.Equals(_userId))
+			if (todo == null || !todo.UserId.ToString().Equals(_userId))
 				throw new DomainException("Task not found", 400);
 
 			await _toDoRepository.DeleteAsync(todo);
@@ -37,7 +37,7 @@ namespace Service.Services
 		public async Task<TodoResponse?> GetAsync(Guid id)
 		{
 			var todo = await _toDoRepository.GetAsync(id);
-			if (todo == null || !todo.UserId.Equals(_userId))
+			if (todo == null || !todo.UserId.ToString().Equals(_userId))
 				throw new DomainException("Task not found", 400);
 			return new TodoResponse(todo.Id, todo.Title, todo.Description, todo.CreatedAt, todo.FinishedAt, todo.UserId);
 		}
