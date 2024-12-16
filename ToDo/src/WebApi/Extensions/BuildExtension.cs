@@ -3,11 +3,14 @@ using Domain.Interfaces.Services;
 using Domain.Settings;
 using Infrastructure;
 using Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Service.Services;
+using System.Text;
 
 namespace WebApi.Extensions
 {
@@ -22,16 +25,23 @@ namespace WebApi.Extensions
 
 		public static void AddAuthentication(this WebApplicationBuilder builder)
 		{
-			/*builder.Services.AddAuthentication(options =>
-			{
-				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-			});*/
-			/*builder.Services.AddAuthentication(options =>
+			builder.Services.AddAuthentication(options =>
 			{
 				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
 				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-			}).AddJwtBearer(options => { options.TokenValidationParameters = new TokenValidationParameters { ValidateIssuer = true, ValidateAudience = true, ValidateLifetime = true, ValidateIssuerSigningKey = true, ValidIssuer = jwtSettings.Issuer, ValidAudience = jwtSettings.Audience, IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key)) }; 
-			});*/
+			}).AddJwtBearer(options =>
+			{
+				options.TokenValidationParameters = new TokenValidationParameters
+				{
+					ValidateIssuer = true,
+					ValidateAudience = true,
+					ValidateLifetime = false,
+					ValidateIssuerSigningKey = true,
+					ValidIssuer = builder.Configuration.GetSection("Jwt:Issuer").Value,
+					ValidAudience = builder.Configuration.GetSection("Jwt:Audience").Value,
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("Jwt:Key").Value!))
+				};
+			});
 		}
 		public static void AddDocumentation(this WebApplicationBuilder builder)
 		{
@@ -57,7 +67,7 @@ namespace WebApi.Extensions
 								Type = ReferenceType.SecurityScheme, Id = "Bearer" }
 						},
 						new string[] { }
-					} 
+					}
 				});
 			});
 

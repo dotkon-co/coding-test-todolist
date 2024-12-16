@@ -19,7 +19,7 @@ namespace Service.Services
         {
 			_toDoRepository = toDoRepository;
 			_httpContextAccessor = httpContextAccessor;
-			_userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.NameId)?.Value!;
+			_userId = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sid)?.Value!;
 
 		}
 

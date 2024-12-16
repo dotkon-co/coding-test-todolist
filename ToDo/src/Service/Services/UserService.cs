@@ -50,7 +50,7 @@ namespace Service.Services
 		public async Task<TokenResponse> LoginAsync(LoginRequest login)
 		{
 			var user = await _userRepository.GetAsync(login.User);
-			var validPassword = _encryptService.CheckHash(login.Password, user.Password ?? "");
+			var validPassword = _encryptService.CheckHash(login.Password, user?.Password ?? "");
 			if (user == null || !validPassword)
 				throw new DomainException("User not found", 400);
 

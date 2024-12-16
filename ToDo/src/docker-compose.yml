@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  dotkonbase:
+    container_name: 'dotkonbase'
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
+    volumes:
+      - ~/apps/mssql/data:/var/lib/mssqlql/data
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: '!DataBasePassword'
+    ports:
+      - '1433:1433'
+    expose:
+      - '1433'
+    networks: 
+      - dotkonnetwork
+  
+  
+  dotkonapp:
+    container_name: 'dotkonapp'
+    build: 
+      context: . 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 8080:8080
+    depends_on:
+      - dotkonbase
+    networks: 
+      - dotkonnetwork
+    #command: /bin/sh -c "sleep 30 && dotnet WebApi.dll"
+
+networks: 
+  dotkonnetwork: 
+    driver: bridge
